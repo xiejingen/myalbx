@@ -18,6 +18,7 @@ app.set('view engine', 'ejs')
 app.set('views',__dirname+'/views')
 
 //使用中间件在当前应用上挂载路由
+//实现路由的配置
 app.use(router)
 
 
