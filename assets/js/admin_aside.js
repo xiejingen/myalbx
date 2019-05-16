@@ -22,7 +22,6 @@ $(function () {
     menu_settings.addClass('in')
     menu_settings.attr('aria-expanded',true)
   }
-  
+    // 为当前li元素添加样式
+    $('#'+routername).addClass('active')
 })
-  // 为当前li元素添加样式
-  $('#'+routername).addClass('active')
