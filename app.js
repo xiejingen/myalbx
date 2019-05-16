@@ -21,7 +21,6 @@ app.set('views',__dirname+'/views')
 //添加bodyParser处理
 app.use(bodyParser.urlencoded({extended:false}))
 //使用中间件在当前应用上挂载路由
-//实现路由的配置
 app.use(router)
 
 
