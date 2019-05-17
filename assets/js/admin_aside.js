@@ -2,13 +2,7 @@ $(function () {
   //在路由满足#menu-posts的时候添加样式和属性
   //在满足#menu-settings的时候做出同样的处理
   //判断是否有参数
-  var index = location.href.indexOf('?')
-  var routername
-  if (index == -1) {
-    routername = location.href.substring(location.href.lastIndexOf('/')+1)
-  } else { 
-    routername=location.href.substring(location.href.lastIndexOf('/')+1,index)
-  }
+  var routername=itcast.getRouterName(location.href)
   //获取当前元素对元素进行属性设置
   var menu_posts = $('#menu-posts')
   if (routername == 'posts' || routername == 'post-add' || routername == 'categories') {
@@ -23,5 +17,6 @@ $(function () {
     menu_settings.attr('aria-expanded',true)
   }
     // 为当前li元素添加样式
+    $('li').removeClass('active')
     $('#'+routername).addClass('active')
 })
