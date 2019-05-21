@@ -12,13 +12,17 @@ exports.login = (req, res) => {
         } else { 
             if (data) {
                 if (data.password == req.body.password) {
-                    //只要一登录上就标记状态保持
+                     // res.writeHead(200,{
+                    //     // expire
+                    //     'Set-Cookie':'isLogin=true'
+                    // })
+                    // 通过session进行状态保持
                     req.session.isLogin = 'true'
                     req.session.currentUser = data
+                    
                     res.end(JSON.stringify({
-                        code: 200,
-                        msg:'登录成功'
-                        
+                        code:200,
+                        msg:'登陆成功'
                     }))
                 } else {
                     res.json({
