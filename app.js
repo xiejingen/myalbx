@@ -20,6 +20,7 @@ app.use('/uploads',express.static('uploads'))
 app.set('view engine', 'ejs')
 //配置ejs的模板文件夹,ejs会自动的在指定的目录下寻找文件
 app.set('views', __dirname + '/views')
+
 //配置session
 app.use(session({
   secret: 'myalbx',//加盐
@@ -27,6 +28,8 @@ app.use(session({
   saveUninitialized: true,   //强制“未初始化”的会话保存到存储。 
 
 }))
+//添加bodyParser处理
+app.use(bodyParser.urlencoded({extended:false}))
 app.use((req, res, next) => { 
   //判断是否需要再次登录
   if (req.session.isLogin && req.session.isLogin == 'true' || req.url.indexOf('/admin') == -1 || req.url == '/admin/login') {
@@ -35,8 +38,7 @@ app.use((req, res, next) => {
     res.redirect('/admin/login')
   }
 })
-//添加bodyParser处理
-app.use(bodyParser.urlencoded({extended:false}))
+
 //使用中间件在当前应用上挂载路由
 app.use(router)
 
